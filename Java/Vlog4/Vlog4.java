@@ -5,7 +5,6 @@
 
 package Java.Vlog4;
 
-import java.io.*;
 import java.util.Scanner;
 import java.lang.Math;
 
@@ -21,12 +20,15 @@ public class Vlog4 {
 
         while(rand != i) {
 
-            Scanner input = new Scanner(System.in);
-            System.out.println("Guess the Number: ");
-            String theinput = input.nextLine();
+            try (Scanner input = new Scanner(System.in)) {
+                System.out.println("Guess the Number: ");
+                String theinput = input.nextLine();
 
-            i=Integer.parseInt(theinput);
-
+                i=Integer.parseInt(theinput);
+            } catch (NumberFormatException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             if(rand == i){
                 System.out.println("You guessed the correct number!");
                 break;
